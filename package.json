@@ -1,0 +1,14 @@
+{
+  "name": "appenvios",
+  "version": "0.0.1",
+  "description": "Laboratorio HTTP 1",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "laboratorio1"
+  ],
+  "author": "Ivan Cruz",
+  "license": "MIT"
+}
