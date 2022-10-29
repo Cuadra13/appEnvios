@@ -6,6 +6,6 @@ app.get('/', function(req,res){
 res.send('Hello World')
 })
 
-app.listen(process.env.PORT. function(req, res) => {
-    console.log("El puerto esta corriendo el puerto TCP" + process.env.PORT)
-})
+app.listen(3000, () => {
+    console.log("El puerto esta corriendo el puerto TCP3000")
+});
