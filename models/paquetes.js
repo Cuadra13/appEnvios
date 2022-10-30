@@ -6,7 +6,7 @@ class Paquetes{
         this.descripcion=descripcion
         this.peso=peso
         this.volumen=volumen
-        this.clsificacion=clsificacion
+        this.clasificacion=clasificacion
        
     }
 }
@@ -35,7 +35,7 @@ class ListadoPaquetes{
             datos.descripcion,
             datos.peso,
             datos.volumen,
-            datos.clsificacion);
+            datos.clasificacion);
             this._listado[paquetes.id] = paquetes;
 }
 }
