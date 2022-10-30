@@ -38,6 +38,15 @@ class ListadoPaquetes{
             datos.clasificacion);
             this._listado[paquetes.id] = paquetes;
 }
+
+actualizarPaquetes(datos){
+    const paquetes = new Paquetes(
+        datos.descripcion,
+        datos.peso,
+        datos.volumen,
+        datos.clasificacion);
+        this._listado[paquetes.id] = paquetes;
+}
 }
 
 
