@@ -38,26 +38,6 @@ crearprecios(datos){
         this._listado[Precios.id] = Precios;
 }
 
-actualizarprecios(datos){
-    const precios = this._listado.map( precio =>
-    precio.id === datos.id
-        ? {
-            ...precio,
-            cantidad : datos.cantidad,
-            valor : datos.valor,
-            estado : datos.estado
-        }
-        : precio
-    );
-
-    this._listado = precios;
-}
-
-deleteprecios(datos){
-    var precio = this._listado.filter(( precios) =>
-    precios.id === datos.id);
-      console.log(precio);
-}
 
 }
 

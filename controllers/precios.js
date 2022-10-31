@@ -22,8 +22,12 @@ const putPrecios = (req = request, res = response) => {
     let lista = new ListadoPrecios()
     let datosJSON = leerDB('precios');
     lista.cargarTareasFromArray(datosJSON)
-    lista.actualizarprecios(req.body)
-    guardarDB(lista.listadoArr,'precios')
+    const datos = lista.listadoArr.map(p =>
+p.id == req.params.id
+?{"id":p.id,...req.body}
+:p
+        );
+    guardarDB(datos,'precios')
     res.send('Registro actualizado')
 }
 
@@ -31,8 +35,8 @@ const deletePrecios = (req = request, res = response) => {
     let lista = new ListadoPrecios()
     let datosJSON = leerDB('precios');
     lista.cargarTareasFromArray(datosJSON)
-    lista.deleteprecios(req.body)
-    guardarDB(lista.listadoArr,'precios')
+    let data = lista.listadoArr.filter(item =>item.id !== req.params.id )
+    guardarDB(data,'precios')
     res.send('Registro eliminado')
 }
 

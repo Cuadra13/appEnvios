@@ -21,11 +21,15 @@ const PostEnvios = (req = request, res = response) =>{
 
 
 const putEnvios = (req = request, res = response) => {
-    let lista = new ListadoEnvios()
+    let lista = new ListadodetallesEnvios()
     let datosJSON = leerDB('envios');
     lista.cargarTareasFromArray(datosJSON)
-    lista.actualizarEnvio(req.body)
-    guardarDB(lista.listadoArr,'envios')
+    const datos = lista.listadoArr.map(p =>
+p.id == req.params.id
+?{"id":p.id,...req.body}
+:p
+        );
+    guardarDB(datos,'envios')
     res.send('Registro actualizado')
 }
 
@@ -33,8 +37,8 @@ const deleteEnvios = (req = request, res = response) => {
     let lista = new ListadoEnvios()
     let datosJSON = leerDB('envios');
     lista.cargarTareasFromArray(datosJSON)
-    lista.deleteEnvios(req.body)
-    guardarDB(lista.listadoArr,'envios')
+    let data = lista.listadoArr.filter(item =>item.id !== req.params.id )
+    guardarDB(data,'envios')
     res.send('Registro eliminado')
 }
 

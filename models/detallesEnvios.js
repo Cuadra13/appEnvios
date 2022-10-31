@@ -36,27 +36,6 @@ class ListadodetallesEnvios{
             this._listado[detallesEnvio.id] = detallesEnvio;  
 }
 
-actualizardetallesEnvios(datos){
-    const detallesEnvio = this._listado.map( detallesEnvios =>
-    detallesEnvios.id === datos.id
-        ? {
-            ...detallesEnvios,
-            codigo : datos.codigo,
-            idEnvio: datos.idEnvio,
-            idPaquetes : datos.idPaquetes
-        }
-        : detallesEnvio
-    );
-
-    this._listado = detallesEnvio;
-}
-
-deletedetallesEnvios(datos){
-    var detallesEnvio = this._listado.filter(( detallesEnvios) =>
-    detallesEnvios.id === datos.id);
-      console.log(detallesEnvio);
-}
-
 }
 
 

@@ -17,22 +17,25 @@ const Postseguimientos = (req = request, res = response) =>{
     guardarDB(lista.listadoArr,'seguimientos')
     res.send('Registro creado')
 }
-
 const putseguimientos = (req = request, res = response) => {
     let lista = new ListadoSeguimientos()
     let datosJSON = leerDB('seguimientos');
     lista.cargarTareasFromArray(datosJSON)
-    lista.actualizarseguimientos(req.body)
-    guardarDB(lista.listadoArr,'seguimientos')
+    const datos = lista.listadoArr.map(p =>
+p.id == req.params.id
+?{"id":p.id,...req.body}
+:p
+        );
+    guardarDB(datos,'seguimientos')
     res.send('Registro actualizado')
 }
 
 const deleteseguimientos = (req = request, res = response) => {
     let lista = new ListadoSeguimientos()
-    let datosJSON = leerDB('envios');
+    let datosJSON = leerDB('seguimientos');
     lista.cargarTareasFromArray(datosJSON)
-    lista.deleteseguimientos(req.body)
-    guardarDB(lista.listadoArr,'seguimientos')
+    let data = lista.listadoArr.filter(item =>item.id !== req.params.id )
+    guardarDB(data,'seguimientos')
     res.send('Registro eliminado')
 }
 

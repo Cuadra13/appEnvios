@@ -36,26 +36,6 @@ class ListadoSeguimientos{
             this._listado[Precios.id] = Seguimientos;
     }
 
-    actualizarseguimientos(datos){
-        const seguimiento = this._listado.map( Seguimientos =>
-        Seguimientosuimientos.id === datos.id
-            ? {
-                ...Seguimientos,
-                fecha: datos.fecha,
-                hora: datos.hora,
-                lugar : datos.lugar
-            }
-            : seguimiento
-        );
-    
-        this._listado = seguimiento;
-    }
-
-    deleteseguimientos(datos){
-        var seguimiento = this._listado.filter(( seguimientos) =>
-        seguimientos.id === datos.id);
-          console.log(seguimiento);
-    }
 
     }
     

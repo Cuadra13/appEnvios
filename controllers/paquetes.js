@@ -23,8 +23,12 @@ const putPaquetes = (req = request, res = response) => {
     let lista = new ListadoPaquetes()
     let datosJSON = leerDB('paquetes');
     lista.cargarTareasFromArray(datosJSON)
-    lista.actualizarPaquetes(req.body)
-    guardarDB(lista.listadoArr,'paquetes')
+    const datos = lista.listadoArr.map(p =>
+p.id == req.params.id
+?{"id":p.id,...req.body}
+:p
+        );
+    guardarDB(datos,'paquetes')
     res.send('Registro actualizado')
 }
 
@@ -32,11 +36,10 @@ const deletePaquetes = (req = request, res = response) => {
     let lista = new ListadoPaquetes()
     let datosJSON = leerDB('paquetes');
     lista.cargarTareasFromArray(datosJSON)
-    lista.deletePaquetes(req.body)
-    guardarDB(lista.listadoArr,'paquetes')
+    let data = lista.listadoArr.filter(item =>item.id !== req.params.id )
+    guardarDB(data,'paquetes')
     res.send('Registro eliminado')
 }
-
 module.exports = {
     GetPaquetes,
     PostPaquetes,

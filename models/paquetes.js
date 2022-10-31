@@ -39,27 +39,6 @@ class ListadoPaquetes{
             this._listado[paquetes.id] = paquetes;
 }
 
-actualizarPaquetes(datos){
-    const paquetes = this._listado.map( paquete =>
-    paquete.id === datos.id
-        ? {
-            ...paquete,
-            descripcion : datos.descripcion,
-            peso : datos.peso,
-            volumen : datos.volumen,
-            clasificacion : datos.clasificacion
-        }
-        : paquete
-    );
-
-    this._listado = paquetes;
-}
-
-deletedepaquetes(datos){
-    var paquete = this._listado.filter(( paquetes) =>
-    paquetes.id === datos.id);
-      console.log(paquete);
-}
 }
 
 
