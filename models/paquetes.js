@@ -40,12 +40,19 @@ class ListadoPaquetes{
 }
 
 actualizarPaquetes(datos){
-    const paquetes = new Paquetes(
-        datos.descripcion,
-        datos.peso,
-        datos.volumen,
-        datos.clasificacion);
-        this._listado[paquetes.id] = paquetes;
+    const paquetes = this._listado.map( paquete =>
+    paquete.id === datos.id
+        ? {
+            ...paquete,
+            descripcion : datos.descripcion,
+            peso : datos.peso,
+            volumen : datos.volumen,
+            clasificacion : datos.clasificacion
+        }
+        : paquete
+    );
+
+    this._listado = paquetes;
 }
 }
 

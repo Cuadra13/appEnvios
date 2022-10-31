@@ -37,6 +37,23 @@ crearprecios(datos){
         datos.estado);
         this._listado[Precios.id] = Precios;
 }
+
+actualizarprecios(datos){
+    const precios = this._listado.map( precio =>
+    precio.id === datos.id
+        ? {
+            ...precio,
+            cantidad : datos.cantidad,
+            valor : datos.valor,
+            estado : datos.estado
+        }
+        : precio
+    );
+
+    this._listado = precios;
+}
+
+
 }
 
 

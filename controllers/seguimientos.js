@@ -1,16 +1,34 @@
 const{request, response} = require('express')
+const { ListadoSeguimientos } = require('../models/seguimientos')
+const {guardarDB, leerDB } = require('../helpers/gestorDB')
 
-const Getseguimientos = (req = request,res = response) =>
-    res.send('GET Endpoint para seguimientos')
+const Getseguimientos = (req = request,res = response) =>{
+    let lista = new ListadoSeguimientos()
+    let datosJSON = leerDB('seguimientos');
+    lista.cargarTareasFromArray(datosJSON)
+    res.json(lista.listadoArr)
+}
 
-const Postseguimientos = (req = request, res = response) =>
-res.send('POST Endpoint para seguimientos')
+const Postseguimientos = (req = request, res = response) =>{
+    let lista = new ListadoSeguimientos()
+    let datosJSON = leerDB('seguimientos');
+    lista.cargarTareasFromArray(datosJSON)
+    lista.crearseguimientos(req.body)
+    guardarDB(lista.listadoArr,'seguimientos')
+    res.send('Registro creado')
+}
 
-const putseguimientos = (req = request, res = response) =>
-res.send('PUT Endpoint para seguimientos')
+const putseguimientos = (req = request, res = response) => {
+    let lista = new ListadoSeguimientos()
+    let datosJSON = leerDB('seguimientos');
+    lista.cargarTareasFromArray(datosJSON)
+    lista.actualizarseguimientos(req.body)
+    guardarDB(lista.listadoArr,'seguimientos')
+    res.send('Registro actualizado')
+}
 
 const deleteseguimientos = (req = request, res = response) =>
-res.send('Endpoint para seguimientos')
+res.send('Endpoint para Detalle Envios')
 
 module.exports = {
     Getseguimientos,

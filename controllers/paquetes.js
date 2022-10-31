@@ -19,8 +19,14 @@ const PostPaquetes = (req = request, res = response) => {
     res.send('Registro creado')
 }
 
-const putPaquetes = (req = request, res = response) =>
-res.send('PUT Endpoint para Paquetes')
+const putPaquetes = (req = request, res = response) => {
+    let lista = new ListadoPaquetes()
+    let datosJSON = leerDB('paquetes');
+    lista.cargarTareasFromArray(datosJSON)
+    lista.actualizarPaquetes(req.body)
+    guardarDB(lista.listadoArr,'paquetes')
+    res.send('Registro actualizado')
+}
 
 const deletePaquetes = (req = request, res = response) =>
 res.send('Endpoint para Paquetes')

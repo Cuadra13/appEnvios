@@ -44,6 +44,26 @@ class ListadoEnvios{
             datos.destinatario);
             this._listado[envio.id] = envio;  
 }
+
+actualizarenvios(datos){
+    const envios = this._listado.map( envio =>
+    envio.id === datos.id
+        ? {
+            ...envio,
+            codigo : datos.codigo,
+            fecha : datos.fecha,
+            tracking : datos.tracking,
+            origen : datos.origen,
+            destino : datos.destino,
+            emisor : datos.emisor,
+            destinatario : datos.destinatario
+        }
+        : envio
+    );
+
+    this._listado = envios;
+}
+
 }
 
 

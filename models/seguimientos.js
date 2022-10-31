@@ -28,13 +28,29 @@ class ListadoSeguimientos{
             this._listado[Seguimientos.id] = Seguimientos;
         });
     }
-    crearprecios(datos){
+    crearseguimientos(datos){
         const Seguimientos = new Seguimientos(
             datos.fecha,
             datos.hora,
             datos.lugar);
-            this._listado[Precios.id] = Precios;
+            this._listado[Precios.id] = Seguimientos;
     }
+
+    actualizarseguimientos(datos){
+        const seguimiento = this._listado.map( Seguimientos =>
+        Seguimientosuimientos.id === datos.id
+            ? {
+                ...Seguimientos,
+                fecha: datos.fecha,
+                hora: datos.hora,
+                lugar : datos.lugar
+            }
+            : seguimiento
+        );
+    
+        this._listado = seguimiento;
+    }
+
     }
     
     
