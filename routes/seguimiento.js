@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const { Getseguimientos, Postseguimientos, putseguimientos, deleteseguimientos } = require('../controllers/seguimientos');
-const router = router();
+const router = Router();
 
 router.get('/seguimiento', Getseguimientos)
 router.post('/seguimiento', Postseguimientos)

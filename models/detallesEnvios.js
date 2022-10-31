@@ -52,18 +52,9 @@ actualizardetallesEnvios(datos){
 }
 
 deletedetallesEnvios(datos){
-    const detallesEnvio = this._listado.map( detallesEnvios =>
-    detallesEnvios.id === datos.id
-        ? {
-            ...detallesEnvios,
-            codigo : datos.codigo,
-            idEnvio: datos.idEnvio,
-            idPaquetes : datos.idPaquetes
-        }
-        : detallesEnvio
-    );
-
-    this._listado = detallesEnvio;
+    var detallesEnvio = this._listado.filter(( detallesEnvios) =>
+    detallesEnvios.id === datos.id);
+      console.log(detallesEnvio);
 }
 
 }

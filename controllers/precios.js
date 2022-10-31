@@ -27,8 +27,14 @@ const putPrecios = (req = request, res = response) => {
     res.send('Registro actualizado')
 }
 
-const deletePrecios = (req = request, res = response) =>
-res.send('Endpoint para Detalle Envios')
+const deletePrecios = (req = request, res = response) => {
+    let lista = new ListadoPrecios()
+    let datosJSON = leerDB('precios');
+    lista.cargarTareasFromArray(datosJSON)
+    lista.deleteprecios(req.body)
+    guardarDB(lista.listadoArr,'precios')
+    res.send('Registro eliminado')
+}
 
 module.exports = {
     GetPrecios,

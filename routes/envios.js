@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const { GetEnvios, PostEnvios, putEnvios, deleteEnvios } = require('../controllers/envios');
-const router = router();
+const router = Router();
 
 router.get('/', GetEnvios)
 router.post('/', PostEnvios)

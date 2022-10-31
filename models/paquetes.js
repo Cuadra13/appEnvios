@@ -54,6 +54,12 @@ actualizarPaquetes(datos){
 
     this._listado = paquetes;
 }
+
+deletedepaquetes(datos){
+    var paquete = this._listado.filter(( paquetes) =>
+    paquetes.id === datos.id);
+      console.log(paquete);
+}
 }
 
 

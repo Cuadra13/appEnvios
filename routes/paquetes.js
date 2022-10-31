@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const { GetPaquetes, PostPaquetes, putPaquetes, deletePaquetes } = require('../controllers/paquetes');
-const router = router();
+const router = Router();
     
     router.get('/', GetPaquetes)
     router.post('/', PostPaquetes)

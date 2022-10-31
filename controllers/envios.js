@@ -29,8 +29,14 @@ const putEnvios = (req = request, res = response) => {
     res.send('Registro actualizado')
 }
 
-const deleteEnvios = (req = request, res = response) =>
-res.send('Endpoint para  Envios')
+const deleteEnvios = (req = request, res = response) => {
+    let lista = new ListadoEnvios()
+    let datosJSON = leerDB('envios');
+    lista.cargarTareasFromArray(datosJSON)
+    lista.deleteEnvios(req.body)
+    guardarDB(lista.listadoArr,'envios')
+    res.send('Registro eliminado')
+}
 
 module.exports = {
     GetEnvios,

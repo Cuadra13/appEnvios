@@ -51,6 +51,12 @@ class ListadoSeguimientos{
         this._listado = seguimiento;
     }
 
+    deleteseguimientos(datos){
+        var seguimiento = this._listado.filter(( seguimientos) =>
+        seguimientos.id === datos.id);
+          console.log(seguimiento);
+    }
+
     }
     
     

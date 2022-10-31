@@ -53,6 +53,11 @@ actualizarprecios(datos){
     this._listado = precios;
 }
 
+deleteprecios(datos){
+    var precio = this._listado.filter(( precios) =>
+    precios.id === datos.id);
+      console.log(precio);
+}
 
 }
 

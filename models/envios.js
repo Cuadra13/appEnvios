@@ -64,6 +64,12 @@ actualizarenvios(datos){
     this._listado = envios;
 }
 
+deletedeEnvios(datos){
+    var Envio = this._listado.filter(( Envios) =>
+    Envios.id === datos.id);
+      console.log(Envio);
+}
+
 }
 
 

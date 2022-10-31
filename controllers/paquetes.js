@@ -28,8 +28,14 @@ const putPaquetes = (req = request, res = response) => {
     res.send('Registro actualizado')
 }
 
-const deletePaquetes = (req = request, res = response) =>
-res.send('Endpoint para Paquetes')
+const deletePaquetes = (req = request, res = response) => {
+    let lista = new ListadoPaquetes()
+    let datosJSON = leerDB('paquetes');
+    lista.cargarTareasFromArray(datosJSON)
+    lista.deletePaquetes(req.body)
+    guardarDB(lista.listadoArr,'paquetes')
+    res.send('Registro eliminado')
+}
 
 module.exports = {
     GetPaquetes,
